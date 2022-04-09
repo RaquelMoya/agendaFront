@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 import './TaskDetail.css';
 
 const TaskDetail = (props) => {
 
     let navigate = useNavigate();
 
+    let config = {
+        headers: { Authorization: `Bearer ${props.credentials.token}` }
+    };
    
 
     useEffect(()=>{
@@ -15,18 +18,60 @@ const TaskDetail = (props) => {
             navigate("/");
         }
     });
+
+       //Hooks
+
+    const [dataTask, setDataTask] = useState({
+        title: "", description: ""
+        
+    });
+
+
+    //Handler (manejador)
+    const inputData = (e) => {
+        setDataTask({...dataTask, 
+            [e.target.name]: e.target.value})
+    };
+
+    const updateTask = async (id) => {
+
+        let body = {
+            title: dataTask.title,
+            description: dataTask.description
+        }
+
+
+        try {
+            
+            let resultado = await axios.put(`https://rocky-retreat-20214.herokuapp.com/api/task/${id}`, body, config);
+            console.log(resultado);
+            
+                setTimeout(()=>{
+                    navigate("/tasks");
+                },1000);
+            
+            
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
    
         return(
             <div className='designFilm'>
                 <div className="filmDetailHalf">
                     <div className="dataFilm title">{props.tasks.title}</div>
                     <div className="dataFilm">{props.tasks.description}</div>
-                    <div className="dataFilm">
-                       
-                    </div>
                 </div>
                 <div className="filmDetailHalf image">
-                       
+                <div className="middleCardRegister">
+                    <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
+                </div>
+                    <div className="buttonRegister" onClick={()=>updateTask(props.tasks.id)}>
+                        Update Task
+                    </div>
             </div>
             </div>
         )
