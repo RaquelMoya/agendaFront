@@ -1,5 +1,5 @@
 
-.designFilm {
+.designDetail{
 
     display: flex;
     flex-direction: row;
@@ -8,22 +8,57 @@
 
     height: 74vh;
     width: 100vw;
-    background-image: url(../../img/backgroundMovieDetails.jpg);
-    background-size: cover;
+    
 }
 
 
-.filmDetailHalf {
+.DetailHalf {
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
 
-    padding: 2em;
-    height: 20vh;
+    height: 74vh;
+    width: 50vw;
+}
 
+.dataDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50vw;
 }
 .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50vw;
     font-weight: bold;
+}
+.button {
+    height: 3.5em;
+    width: 8em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    margin: 1em;
+    border-radius: 0.3em;
+
+    background-color: orangered;
+    color: white;
+
+    transition: 0.3s;
+}
+.button:hover {
+    background-color: lightsalmon;
+    font-size: larger;
+    transition: 0.3s;
 }

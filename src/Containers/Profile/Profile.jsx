@@ -71,7 +71,8 @@ const Profile = (props) => {
                     </b></div>
                     <div className="profileField"><b>Apellidos:</b><input type="text" name="surname" id="surname" title="surname" placeholder={props.credentials.user.surname} autoComplete="off" onChange={(e) => { inputData(e) }} />
                     </div>
-                    <div className="profileField"><b>Email:</b><input type="email" name="email" id="email" title="email" placeholder={props.credentials.user.email} autoComplete="off" onChange={(e) => { inputData(e) }} /></div>
+                    <div className="profileField"><b>Email:    </b><input type="email" name="email" id="email" title="email" placeholder={props.credentials.user.email} autoComplete="off" onChange={(e) => { inputData(e) }} />
+                    </div>
                     <div className="profileField"><b>Nickname:</b><input type="text" name="nickname" id="nickname" title="nickname" placeholder={props.credentials.user.nickname} autoComplete="off" onChange={(e) => { inputData(e) }} />
                     </div> 
                     <div className="updateButton" onClick={()=>updateUser()}>Update</div>
@@ -80,6 +81,7 @@ const Profile = (props) => {
                 <div className="designProfileHalf profileRight">
                 <Button destiny={"Tasks"} url={"/tasks"}/>
                 <Button destiny={"Notes"} url={"/notes"}/>
+                <Button destiny={"Contacts"} url={"/contacts"}/>
                 </div>
 
             </div>

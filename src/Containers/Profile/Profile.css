@@ -3,8 +3,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: url(../../img/backgroundHome.jpg);
-    background-size: cover;
     height: 74vh;
     width: 100vw;
 }
@@ -23,11 +21,11 @@
 }
 .profileLeft {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items:center;
 
-    color: white;
+    color: black;
 
 }
 

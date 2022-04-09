@@ -59,17 +59,17 @@ const TaskDetail = (props) => {
     }
    
         return(
-            <div className='designFilm'>
-                <div className="filmDetailHalf">
-                    <div className="dataFilm title">{props.tasks.title}</div>
-                    <div className="dataFilm">{props.tasks.description}</div>
+            <div className='designDetail'>
+                <div className="DetailHalf">
+                    <div className="dataDetail title">{props.tasks.title}</div>
+                    <div className="dataDetail">{props.tasks.description}</div>
                 </div>
-                <div className="filmDetailHalf image">
-                <div className="middleCardRegister">
+                <div className="DetailHalf">
+                <div className="middleCard">
                     <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
                 </div>
-                    <div className="buttonRegister" onClick={()=>updateTask(props.tasks.id)}>
+                    <div className="button" onClick={()=>updateTask(props.tasks.id)}>
                         Update Task
                     </div>
             </div>

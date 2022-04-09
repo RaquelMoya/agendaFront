@@ -2,10 +2,9 @@
     height: 20vh;
     width: 100vw;
 
-    background-image: url(../../img/panoramic.png);
-    background-position: center;
-    background-size:80vw 20em;
     color: black;
+
+    background-color: lightskyblue;
 
     display: flex;
     align-items: center;

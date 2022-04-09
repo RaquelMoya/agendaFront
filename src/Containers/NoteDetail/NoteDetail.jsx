@@ -62,18 +62,17 @@ const NoteDetail = (props) => {
     }
    
         return(
-            <div className='designFilm'>
-                <div className="filmDetailHalf">
-                    <div className="dataFilm title">{props.notes.title}</div>
-                    <div className="dataFilm">{props.notes.description}</div>
-                    <div className="dataFilm"></div>
+            <div className='designDetail'>
+                <div className="DetailHalf">
+                    <div className="dataDetail title">{props.notes.title}</div>
+                    <div className="dataDetail">{props.notes.description}</div>
                 </div>
-                <div className="filmDetailHalf image">
-                <div className="middleCardRegister">
+                <div className="DetailHalf">
+                <div className="middleCard">
                     <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
                 </div>
-                    <div className="buttonRegister" onClick={()=>updateNote(props.notes.id)}>
+                    <div className="button" onClick={()=>updateNote(props.notes.id)}>
                         Update Note
                     </div>
                 </div>

@@ -91,7 +91,7 @@ const Notes = (props) => {
             props.dispatch({type:NOTE_DETAIL, payload: resultado.data.note});
 
             setTimeout(()=>{
-                navigate("/notes");
+                getNotes();
             },1000)
         } catch (error) {
             console.log(error);

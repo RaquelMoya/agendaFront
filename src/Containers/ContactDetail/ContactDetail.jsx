@@ -59,21 +59,20 @@ const ContactDetail = (props) => {
 
     }
         return(
-            <div className='designFilm'>
-                <div className="filmDetailHalf">
-                    <div className="dataFilm title">{props.contacts.name}</div>
-                    <div className="dataFilm">{props.contacts.surname}</div>
-                    <div className="dataFilm">{props.contacts.phone}</div>
-                    <div className="dataFilm">{props.contacts.email}</div>
+            <div className='designDetail'>
+                <div className="detailHalf">
+                    <div className="datadetail title">{props.contacts.name}</div>
+                    <div className="datadetail">{props.contacts.surname}</div>
+                    <div className="datadetail">{props.contacts.phone}</div>
+                    <div className="datadetail">{props.contacts.email}</div>
                 </div>
-                <div className="filmDetailHalf image">
+                <div className="detailHalf">
                 <input type="text" name="name" id="name" title="name" placeholder="Nombre:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="text" name="surname" id="surname" title="surname" placeholder="Apellido:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="tel" name="phone" id="phone" title="phone" placeholder="Phone: " autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    
                 </div>
-                    <div className="buttonRegister" onClick={()=>updateContact(props.contacts.id)}>
+                    <div className="button" onClick={()=>updateContact(props.contacts.id)}>
                         Update Contact
                     </div>
                 </div>

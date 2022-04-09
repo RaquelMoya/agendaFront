@@ -89,7 +89,7 @@ const Contact = (props) => {
             props.dispatch({type:CONTACT_DETAIL, payload: resultado.data.contact});
 
             setTimeout(()=>{
-                navigate("/contacts");
+                getContacts();
             },1000)
         } catch (error) {
             console.log(error);
@@ -118,7 +118,7 @@ const Contact = (props) => {
                     })
                 }
                 <div className="new">
-                <input type="text" name="name" id="name" title="name" placeholder="Name:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="text" name="name" id="name" title="name" placeholder="Name:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="text" name="surname" id="surname" title="surname" placeholder="Surname:" autoComplete="off" onChange={(e)=>{inputData(e)}}/> 
                     <input type="text" name="phone" id="phone" title="phone" placeholder="Phone:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
                     <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>  
@@ -131,9 +131,8 @@ const Contact = (props) => {
         )
     }else{
         return (
-            <div className='designMovies'>
-                <div className="marginLoader">
-                </div>
+            <div className='designContacts'>
+                <div className="marginLoader"> Cargando </div>
             </div>
         )
     }

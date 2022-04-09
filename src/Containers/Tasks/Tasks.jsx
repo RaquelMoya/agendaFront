@@ -87,7 +87,7 @@ const Tasks = (props) => {
                 props.dispatch({type:TASK_DETAIL, payload: resultado.data.task});
 
                 setTimeout(()=>{
-                    navigate("/tasks");
+                    getTasks();
                 },1000)
             } catch (error) {
                 console.log(error);

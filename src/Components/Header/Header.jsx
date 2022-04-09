@@ -97,8 +97,7 @@ const Header = (props) => {
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
                     <div className="link" onClick={()=>navegar("/login")}>Login</div>
-                    <div className="link" onClick={()=>navegar("/register")}>Register</div>   
-                    <div className="link"onClick={()=>navegar("/home")}>Home</div> 
+                    <div className="link" onClick={()=>navegar("/register")}>Register</div>  
                 </div>
             </div>
         )

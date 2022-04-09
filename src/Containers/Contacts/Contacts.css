@@ -1,4 +1,4 @@
-.designMovies {
+.designContacts {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,9 +24,7 @@
 .designRooster>*{
     flex-basis: 25%;
 }
-img {
-    cursor: pointer;
-}
+
 .contact {
     display: flex;
     
@@ -38,4 +36,11 @@ img {
     background-color: antiquewhite;
 
     cursor: pointer;
+}
+.new{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
 }
