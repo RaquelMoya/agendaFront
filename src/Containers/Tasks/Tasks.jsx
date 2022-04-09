@@ -124,8 +124,13 @@ const Tasks = (props) => {
         )
     }else{
         return (
-            <div className='designMovies'>
-                <div className="marginLoader">
+            <div className='designTasks'>
+                <div className="new">
+                <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
+                    <div className="buttonRegister" onClick={()=>createTask()}>
+                        Create Task
+                    </div>
                 </div>
             </div>
         )
