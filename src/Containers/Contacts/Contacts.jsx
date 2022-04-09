@@ -17,6 +17,18 @@ const Contact = (props) => {
 
     const [contacts, setContacts] = useState([]);
 
+    const [dataContact, setDataContact] = useState({
+        name: "", surname: "", phone: "", email: ""
+        
+    });
+
+
+    //Handler (manejador)
+    const inputData = (e) => {
+        setDataContact({...dataContact, 
+            [e.target.name]: e.target.value})
+    };
+
     useEffect(()=>{
         getContacts();
     },[]);
@@ -58,6 +70,32 @@ const Contact = (props) => {
                 console.log(error);
             }
     }
+
+    const createContact = async () => {
+
+        let body = {
+            name: dataContact.name,
+            surname: dataContact.surname,
+            phone: dataContact.phone,
+            email: dataContact.email
+        }
+
+
+        try {
+            
+            let resultado = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/contact`, body, config);
+            console.log(resultado);
+            
+            props.dispatch({type:CONTACT_DETAIL, payload: resultado.data.contact});
+
+            setTimeout(()=>{
+                navigate("/contacts");
+            },1000)
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
  
     if(contacts[0]?.id !== undefined){
         return(
@@ -79,7 +117,16 @@ const Contact = (props) => {
                         )
                     })
                 }
-                
+                <div className="new">
+                <input type="text" name="name" id="name" title="name" placeholder="Name:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="text" name="surname" id="surname" title="surname" placeholder="Surname:" autoComplete="off" onChange={(e)=>{inputData(e)}}/> 
+                    <input type="text" name="phone" id="phone" title="phone" placeholder="Phone:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>  
+                    <div className="buttonRegister" onClick={()=>createContact()}>
+                        Create Contact
+                    </div>
+                </div>
+
             </div>
         )
     }else{

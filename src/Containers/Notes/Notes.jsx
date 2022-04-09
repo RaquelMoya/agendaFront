@@ -15,6 +15,18 @@ const Notes = (props) => {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
     };
 
+    const [dataNote, setDataNote] = useState({
+        title: "", description: ""
+        
+    });
+
+
+    //Handler (manejador)
+    const inputData = (e) => {
+        setDataNote({...dataNote, 
+            [e.target.name]: e.target.value})
+    };
+
     const [notes, setNotes] = useState([]);
 
     useEffect(()=>{
@@ -62,6 +74,30 @@ const Notes = (props) => {
                 console.log(error);
             }
     }
+
+    const createNote = async () => {
+
+        let body = {
+            title: dataNote.title,
+            description: dataNote.description
+        }
+
+
+        try {
+            
+            let resultado = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/note`, body, config);
+            console.log(resultado);
+            
+            props.dispatch({type:NOTE_DETAIL, payload: resultado.data.note});
+
+            setTimeout(()=>{
+                navigate("/notes");
+            },1000)
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
  
     if(notes[0]?.id !== undefined){
         return(
@@ -81,6 +117,13 @@ const Notes = (props) => {
                         )
                     })
                 }
+                 <div className="new">
+                <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
+                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
+                    <div className="buttonRegister" onClick={()=>createNote()}>
+                        Create Note
+                    </div>
+                </div>
                 
             </div>
         )
