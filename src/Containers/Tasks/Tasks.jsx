@@ -45,6 +45,19 @@ const Tasks = (props) => {
         //Redirigimos a movieDetail con navigate
         navigate("/taskdetail");
     }
+
+    const deleteTask = async (id) => {
+
+                
+        try {
+
+            await axios.delete(`https://rocky-retreat-20214.herokuapp.com/api/task/${id}`,config);
+    
+            getTasks()
+            }catch (error){
+                console.log(error);
+            }
+    }
  
     if(tasks[0]?.id !== undefined){
         return(
@@ -56,9 +69,10 @@ const Tasks = (props) => {
                       
                         return (
         
-                            <div className="task" key={task.id} onClick={()=>chooseTask(task)}>
-                                <p>Title: {task.title}</p>
+                            <div className="task" key={task.id}>
+                                <p onClick={()=>chooseTask(task)}>Title: {task.title}</p>
                                 <p>Description: {task.description}</p>
+                                <div className="delete" onClick={()=>deleteTask(task.id)}>Delete</div>
                             </div>
                         )
                     })

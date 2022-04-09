@@ -15,6 +15,9 @@ import './Header.css';
 const Header = (props) => {
 
     let navigate = useNavigate();
+    let config = {
+        headers: { Authorization: `Bearer ${props.credentials.token}` }
+    };
     const [taskTitle, setTaskTitle] = useState("");
     const [noteTitle, setNoteTitle] = useState("");
 
@@ -46,12 +49,12 @@ const Header = (props) => {
 
 
         try {
-            let resultados = await axios.get(`https://rocky-retreat-20214.herokuapp.com/api/notes_title/${noteTitle}`);
+            let resultados = await axios.get(`https://rocky-retreat-20214.herokuapp.com/api/notes_title/${noteTitle}`, config);
 
             props.dispatch({type: NOTES_TITLE, payload: resultados.data});
 
             setTimeout(()=>{
-                navigate("/notes");
+                navigate("/notedetail");
             },500);
 
 
@@ -63,12 +66,12 @@ const Header = (props) => {
 
 
         try {
-            let resultados = await axios.get(`https://rocky-retreat-20214.herokuapp.com/api/tasks_title/${taskTitle}`);
+            let resultados = await axios.get(`https://rocky-retreat-20214.herokuapp.com/api/tasks_title/${taskTitle}`, config);
 
             props.dispatch({type: TASKS_TITLE, payload: resultados.data});
 
             setTimeout(()=>{
-                navigate("/tasks");
+                navigate("/taskdetail");
             },500);
 
 

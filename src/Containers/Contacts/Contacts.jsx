@@ -45,6 +45,19 @@ const Contact = (props) => {
         //Redirigimos a movieDetail con navigate
         navigate("/contactdetail");
     }
+
+    const deleteContact = async (id) => {
+
+                
+        try {
+
+            await axios.delete(`https://rocky-retreat-20214.herokuapp.com/api/contact/${id}`,config);
+    
+            getContacts()
+            }catch (error){
+                console.log(error);
+            }
+    }
  
     if(contacts[0]?.id !== undefined){
         return(
@@ -56,11 +69,12 @@ const Contact = (props) => {
                       
                         return (
         
-                            <div className="contact" key={contact.id} onClick={()=>chooseContact(contact)}>
-                                <p>Name: {contact.name}</p>
+                            <div className="contact" key={contact.id}>
+                                <p  onClick={()=>chooseContact(contact)}>Name: {contact.name}</p>
                                 <p>Surname: {contact.surname}</p>
                                 <p>Phone: {contact.phone}</p>
                                 <p>Email: {contact.email}</p>
+                                <div className="delete" onClick={()=>deleteContact(contact.id)}>Delete</div>
                             </div>
                         )
                     })

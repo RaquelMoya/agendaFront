@@ -32,6 +32,8 @@ const Notes = (props) => {
             setTimeout(()=>{
 
                 setNotes(res.data.notes);
+
+                props.dispatch({type: NOTE_DETAIL, payload: res.data.notes});
             },1500);
 
         } catch (error) {
@@ -47,6 +49,19 @@ const Notes = (props) => {
         //Redirigimos a movieDetail con navigate
         navigate("/notedetail");
     }
+
+    const deleteNote = async (id) => {
+
+                
+        try {
+
+            await axios.delete(`https://rocky-retreat-20214.herokuapp.com/api/note/${id}`,config);
+    
+            getNotes()
+            }catch (error){
+                console.log(error);
+            }
+    }
  
     if(notes[0]?.id !== undefined){
         return(
@@ -58,9 +73,10 @@ const Notes = (props) => {
                       
                         return (
         
-                            <div className="note" key={note.id} onClick={()=>chooseNote(note)}>
-                                <p>Title: {note.title}</p>
+                            <div className="note" key={note.id}>
+                                <p onClick={()=>chooseNote(note)}>Title: {note.title}</p>
                                 <p>Description: {note.description}</p>
+                                <div className="delete" onClick={()=>deleteNote(note.id)}>Delete</div>
                             </div>
                         )
                     })

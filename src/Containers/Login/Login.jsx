@@ -49,8 +49,7 @@ const Login = (props) => {
 
 
                 props.dispatch({type:LOGIN, payload: resultado.data});
-                   
-                console.log(props.credentials)
+                  
                 setTimeout(()=>{
                   
                     navigate("/profile");

@@ -21,9 +21,7 @@ const NoteDetail = (props) => {
                 <div className="filmDetailHalf">
                     <div className="dataFilm title">{props.notes.title}</div>
                     <div className="dataFilm">{props.notes.description}</div>
-                    <div className="dataFilm">
-                       
-                    </div>
+                    <div className="dataFilm"></div>
                 </div>
                 <div className="filmDetailHalf image">
                        
