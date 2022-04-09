@@ -1,0 +1,58 @@
+.designProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../img/backgroundHome.jpg);
+    background-size: cover;
+    height: 74vh;
+    width: 100vw;
+}
+.designProfileHalf {
+
+    width: 50vw;
+
+}
+
+.profileRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.profileLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+
+    color: white;
+
+}
+
+.updateButton {
+    height: 2em;
+    width: 6em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightsteelblue;
+    color: hsl(0, 0%, 30%);
+
+    border-radius: 0.2em;
+    cursor: pointer;
+
+    margin-top: 1em;
+
+}
+
+.updateButton:hover {
+    color: lightsteelblue;
+    background-color: hsl(0, 0%, 30%);
+    border-radius: 0.2em;
+    
+}

@@ -1,0 +1,29 @@
+
+.designFilm {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    height: 74vh;
+    width: 100vw;
+    background-image: url(../../img/backgroundMovieDetails.jpg);
+    background-size: cover;
+}
+
+
+.filmDetailHalf {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2em;
+    height: 20vh;
+
+}
+.title {
+    font-weight: bold;
+}

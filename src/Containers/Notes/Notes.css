@@ -1,0 +1,60 @@
+.Card {
+    width: 15em;
+    height: 12em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 2em;
+    border-color: grey;
+    background-color: lightgrey;
+    
+}
+
+p {
+    width: 10em;
+    height: 8em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    width: 12em;
+    height: 17em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.designRooster {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+    height: 74vh;
+    width: 100vw;
+    
+    flex-wrap: wrap;
+
+
+}
+.note {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 1em;
+    border-style: solid;
+    background-color: antiquewhite;
+
+    cursor: pointer;
+}

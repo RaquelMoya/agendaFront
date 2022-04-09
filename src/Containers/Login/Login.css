@@ -1,0 +1,60 @@
+.designLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 18em;
+
+    background-image: url(../../img/backgoundLogin.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.932);
+    
+    
+    height: 74vh;
+    width: 100vw;
+}
+.designLogin img{
+    width: 100vw;
+    height: 70vh;
+    opacity: 0.7;
+}
+.loginButton {
+    width: 6em;
+    height: 2em;
+
+    color: white;
+
+    transition: 0.3s;
+    background-color: blueviolet;
+    margin-top: 1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3em;
+}
+
+.loginButton:hover {
+    transition: 0.3s;
+
+    background-color: greenyellow;
+
+    cursor: pointer;
+}
+.space {
+    margin-bottom: 4em;
+}
+
+.designForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 4em;
+
+    
+}
