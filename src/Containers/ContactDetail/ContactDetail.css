@@ -1,6 +1,6 @@
 .designDetail {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -15,8 +15,8 @@
     align-items: center;
     justify-content: center;
 
-    height: 74vh;
-    width: 50vw;
+    height: 50vh;
+    width: 80vw;
 }
 .datadetail {
     display: flex;
@@ -24,8 +24,8 @@
     align-items: center;
     justify-content: center;
 
-    height: 74vh;
-    width: 50vw;
+    height: 50vh;
+    width: 800vw;
 }
 .title {
     display: flex;
@@ -33,6 +33,5 @@
     align-items: center;
     justify-content: center;
 
-    height: 70vh;
-    width: 50vw;
+    height: 50vh;
 }

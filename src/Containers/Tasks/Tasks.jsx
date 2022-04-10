@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { TASK_DETAIL} from '../../redux/types';
 import axios from 'axios';
+import AddTask from "./AddTask/AddTask";
+import {
+  DeleteOutlined,
+} from "@ant-design/icons";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useNavigate, Link } from "react-router-dom";
+import { notification } from "antd";
+
 
 
 import './Tasks.css';
 
 const Tasks = (props) => {
 
+    AOS.init();
     let navigate = useNavigate();
     let config = {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
@@ -29,7 +38,6 @@ const Tasks = (props) => {
             setTimeout(()=>{
                 
                 setTasks(res.data.tasks);
-                console.log(tasks);
             },1500);
 
         } catch (error) {
@@ -96,32 +104,35 @@ const Tasks = (props) => {
         }
  
     if(tasks[0]?.id !== undefined){
-        return(
-            <div className="designRooster">
-
-                {
-                    
-                    tasks.map(task => {
-                      
-                        return (
-        
-                            <div className="task" key={task.id}>
-                                <p onClick={()=>chooseTask(task)}>Title: {task.title}</p>
-                                <p>Description: {task.description}</p>
-                                <div className="delete" onClick={()=>deleteTask(task.id)}>Delete</div>
-                            </div>
-                        )
-                    })
-                }
-                <div className="new">
-                <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
-                    <div className="buttonRegister" onClick={()=>createTask()}>
-                        Create Task
+        return (
+            <div className="Home">
+              <AddTask />
+              {tasks.map((task, index) => {
+                return (
+                  <div className="father" key={index} data-aos="zoom-in-right">
+                    <Link onClick={()=>chooseTask(task)}to={"/taskdetail" }>
+                      <div className="row1">
+                        <div className="title">Title: {task.title}</div>
+                        <div className="description">Description: {task.description}</div>
+                      </div>
+                    </Link>
+                    <div className="row2">
+                          <DeleteOutlined
+                            style={{ fontSize: "20px", color: "red", padding: "1em" }}
+                            onClick={() => {
+                              deleteTask(task.id);
+                              notification.success({
+                                message: "Task successfully deleted",
+                              });
+                            }}
+                          />
+                      </div>
                     </div>
-                </div>
+                );
+              })}
             </div>
-        )
+            
+          );
     }else{
         return (
             <div className='designTasks'>

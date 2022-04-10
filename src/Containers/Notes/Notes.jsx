@@ -1,14 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { NOTE_DETAIL} from '../../redux/types';
 import axios from 'axios';
+import AddNote from "./AddNote/AddNote";
+import {
+  DeleteOutlined,
+} from "@ant-design/icons";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useNavigate, Link } from "react-router-dom";
+import { notification } from "antd";
 
 
 import './Notes.css';
 
 const Notes = (props) => {
-
+    AOS.init();
     let navigate = useNavigate();
 
     let config = {
@@ -32,7 +39,6 @@ const Notes = (props) => {
     useEffect(()=>{
         
         getNotes();
-        console.log(notes);
     },[]);
 
     const getNotes = async () => {
@@ -100,33 +106,35 @@ const Notes = (props) => {
     }
  
     if(notes[0]?.id !== undefined){
-        return(
-            <div className="designRooster">
-
-                {
-                    
-                    notes.map(note => {
-                      
-                        return (
-        
-                            <div className="note" key={note.id}>
-                                <p onClick={()=>chooseNote(note)}>Title: {note.title}</p>
-                                <p>Description: {note.description}</p>
-                                <div className="delete" onClick={()=>deleteNote(note.id)}>Delete</div>
-                            </div>
-                        )
-                    })
-                }
-                 <div className="new">
-                <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
-                    <div className="buttonRegister" onClick={()=>createNote()}>
-                        Create Note
+        return (
+            <div className="Home">
+              <AddNote />
+              {notes.map((note, index) => {
+                return (
+                  <div className="father" key={index} data-aos="zoom-in-right">
+                    <Link onClick={()=>chooseNote(note)}to={"/notedetail" }>
+                      <div className="row1">
+                        <div className="title">Title: {note.title}</div>
+                        <div className="description">Description: {note.description}</div>
+                      </div>
+                    </Link>
+                    <div className="row2">
+                          <DeleteOutlined
+                            style={{ fontSize: "20px", color: "red", padding: "1em" }}
+                            onClick={() => {
+                              deleteNote(note.id);
+                              notification.success({
+                                message: "Note successfully deleted",
+                              });
+                            }}
+                          />
+                      </div>
                     </div>
-                </div>
-                
+                );
+              })}
             </div>
-        )
+            
+          );
     }else{
         return (
             <div className='designNotes'>

@@ -1,14 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { CONTACT_DETAIL} from '../../redux/types';
 import axios from 'axios';
+import AddContact from "./AddContact/AddContact";
+import {
+  DeleteOutlined,
+} from "@ant-design/icons";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useNavigate, Link } from "react-router-dom";
+import { notification } from "antd";
 
 
 import './Contacts.css';
 
 const Contact = (props) => {
 
+    AOS.init();
     let navigate = useNavigate();
 
     let config = {
@@ -98,37 +106,37 @@ const Contact = (props) => {
     }
  
     if(contacts[0]?.id !== undefined){
-        return(
-            <div className="designRooster">
-
-                {
-                    
-                    contacts.map(contact => {
-                      
-                        return (
-        
-                            <div className="contact" key={contact.id}>
-                                <p  onClick={()=>chooseContact(contact)}>Name: {contact.name}</p>
-                                <p>Surname: {contact.surname}</p>
-                                <p>Phone: {contact.phone}</p>
-                                <p>Email: {contact.email}</p>
-                                <div className="delete" onClick={()=>deleteContact(contact.id)}>Delete</div>
-                            </div>
-                        )
-                    })
-                }
-                <div className="new">
-                    <input type="text" name="name" id="name" title="name" placeholder="Name:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="text" name="surname" id="surname" title="surname" placeholder="Surname:" autoComplete="off" onChange={(e)=>{inputData(e)}}/> 
-                    <input type="text" name="phone" id="phone" title="phone" placeholder="Phone:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>  
-                    <div className="buttonRegister" onClick={()=>createContact()}>
-                        Create Contact
+        return (
+            <div className="Home">
+              <AddContact />
+              {contacts.map((contact, index) => {
+                return (
+                  <div className="father" key={index} data-aos="zoom-in-right">
+                    <Link onClick={()=>chooseContact(contact)}to={"/contactdetail" }>
+                      <div className="row1">
+                        <div className="name">Name: {contact.name}</div>
+                        <div className="surname">Surname: {contact.surname}</div>
+                        <div className="phone">Phone: {contact.phone}</div>
+                        <div className="email">Email: {contact.email}</div>
+                      </div>
+                    </Link>
+                    <div className="row2">
+                          <DeleteOutlined
+                            style={{ fontSize: "20px", color: "red", padding: "1em" }}
+                            onClick={() => {
+                              deleteContact(contact.id);
+                              notification.success({
+                                message: "Contact successfully deleted",
+                              });
+                            }}
+                          />
+                      </div>
                     </div>
-                </div>
-
+                );
+              })}
             </div>
-        )
+            
+          );
     }else{
         return (
             <div className='designContacts'>
