@@ -31,10 +31,10 @@ const Header = (props) => {
     if (!props.credentials?.token) {
         return (
             <div className='designHeader'>
-                <div className="headerSpace genreDesign">
+                <div className="headerSpace Design">
 
                 </div>
-                <div className="headerSpace searchDesign">
+                <div className="headerSpace">
 
                 </div>
                 <div className="headerSpace"></div>
