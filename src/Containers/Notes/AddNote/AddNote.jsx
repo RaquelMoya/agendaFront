@@ -1,52 +1,52 @@
 import { Form, Input, Button, notification } from "antd";
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {NOTE_DETAIL} from '../../../redux/types';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { NOTE_DETAIL } from '../../../redux/types';
 import axios from 'axios';
 import "./AddNote.css";
 
 const AddNote = (props) => {
 
-    const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
 
-    let config = {
-        headers: { Authorization: `Bearer ${props.credentials.token}` }
-    };
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  };
   const onFinish = async (values) => {
-  
+
     const getNotes = async () => {
 
-        try {
+      try {
 
-            let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/notes_user", config);
+        let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/notes_user", config);
 
-            setTimeout(()=>{
-                
-                setNotes(res.data.notes);
-            },1500);
+        setTimeout(() => {
 
-        } catch (error) {
-            console.log(error);
-        }
+          setNotes(res.data.notes);
+        }, 1500);
+
+      } catch (error) {
+        console.log(error);
+      }
     };
     const createNote = async () => {
-    
-        let body = {
-            title: values.title,
-            description: values.description
-        }
+
+      let body = {
+        title: values.title,
+        description: values.description
+      }
 
 
-        try {
-            
-            let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/note`, body, config);
-            console.log(res);
-            
-            props.dispatch({type:NOTE_DETAIL, payload: res.data.note});
+      try {
 
-        } catch (error) {
-            console.log(error);
-        }
+        let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/note`, body, config);
+        console.log(res);
+
+        props.dispatch({ type: NOTE_DETAIL, payload: res.data.note });
+
+      } catch (error) {
+        console.log(error);
+      }
 
     }
 
@@ -117,6 +117,6 @@ const AddNote = (props) => {
 };
 
 export default connect((state) => ({
-    credentials: state.credentials,
-    notes: state.note.note
+  credentials: state.credentials,
+  notes: state.note.note
 }))(AddNote);

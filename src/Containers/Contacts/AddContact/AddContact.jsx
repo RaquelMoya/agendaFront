@@ -1,54 +1,54 @@
 import { Form, Input, Button, notification } from "antd";
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {CONTACT_DETAIL} from '../../../redux/types';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { CONTACT_DETAIL } from '../../../redux/types';
 import axios from 'axios';
 import "./AddContact.css";
 
 const AddContact = (props) => {
 
-    const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([]);
 
-    let config = {
-        headers: { Authorization: `Bearer ${props.credentials.token}` }
-    };
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  };
   const onFinish = async (values) => {
-  
+
     const getContacts = async () => {
 
-        try {
+      try {
 
-            let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/contacts_user", config);
+        let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/contacts_user", config);
 
-            setTimeout(()=>{
-                
-                setContacts(res.data.contacts);
-            },1500);
+        setTimeout(() => {
 
-        } catch (error) {
-            console.log(error);
-        }
+          setContacts(res.data.contacts);
+        }, 1500);
+
+      } catch (error) {
+        console.log(error);
+      }
     };
     const createContact = async () => {
-    
-        let body = {
-            name: values.name,
-            surname: values.surname,
-            phone: values.phone,
-            email: values.email
-        }
+
+      let body = {
+        name: values.name,
+        surname: values.surname,
+        phone: values.phone,
+        email: values.email
+      }
 
 
-        try {
-            
-            let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/contact`, body, config);
-            console.log(res);
-            
-            props.dispatch({type:CONTACT_DETAIL, payload: res.data.contact});
+      try {
 
-        } catch (error) {
-            console.log(error);
-        }
+        let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/contact`, body, config);
+        console.log(res);
+
+        props.dispatch({ type: CONTACT_DETAIL, payload: res.data.contact });
+
+      } catch (error) {
+        console.log(error);
+      }
 
     }
 
@@ -143,6 +143,6 @@ const AddContact = (props) => {
 };
 
 export default connect((state) => ({
-    credentials: state.credentials,
-    contacts: state.contact.contact
+  credentials: state.credentials,
+  contacts: state.contact.contact
 }))(AddContact);

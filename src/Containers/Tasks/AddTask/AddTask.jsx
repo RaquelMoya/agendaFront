@@ -1,19 +1,18 @@
 import { Form, Input, Button, notification } from "antd";
-import {Navigate, useNavigate} from 'react-router-dom';
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {TASK_DETAIL} from '../../../redux/types';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { TASK_DETAIL } from '../../../redux/types';
 import axios from 'axios';
 import "./AddTask.css";
 
 const AddTask = (props) => {
 
-    const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
 
-    let config = {
-        headers: { Authorization: `Bearer ${props.credentials.token}` }
-    };
+  let config = {
+    headers: { Authorization: `Bearer ${props.credentials.token}` }
+  };
   const onFinish = async (values) => {
     const res = await createTask(values);
     if (res) {
@@ -23,40 +22,40 @@ const AddTask = (props) => {
     }
     getTasks();
   };
-  
-    const getTasks = async () => {
 
-        try {
+  const getTasks = async () => {
 
-            let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/tasks_user", config);
+    try {
 
-                setTasks(res.data.tasks);
-            
+      let res = await axios.get("https://rocky-retreat-20214.herokuapp.com/api/tasks_user", config);
 
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    const createTask = async (values) => {
-    
-        let body = {
-            title: values.title,
-            description: values.description
-        }
+      setTasks(res.data.tasks);
 
 
-        try {
-            
-            let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/task`, body, config);
-            console.log(res);
-            
-            props.dispatch({type:TASK_DETAIL, payload: res.data.task});
-
-        } catch (error) {
-            console.log(error);
-        }
-
+    } catch (error) {
+      console.log(error);
     }
+  };
+  const createTask = async (values) => {
+
+    let body = {
+      title: values.title,
+      description: values.description
+    }
+
+
+    try {
+
+      let res = await axios.post(`https://rocky-retreat-20214.herokuapp.com/api/task`, body, config);
+      console.log(res);
+
+      props.dispatch({ type: TASK_DETAIL, payload: res.data.task });
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
   return (
     <div className="add-post-container">
       <Form
@@ -108,7 +107,7 @@ const AddTask = (props) => {
           <Button type="dashed" htmlType="submit">
             Create task
           </Button>
-          
+
         </Form.Item>
       </Form>
     </div>
@@ -116,6 +115,6 @@ const AddTask = (props) => {
 };
 
 export default connect((state) => ({
-    credentials: state.credentials,
-    tasks: state.task.task
+  credentials: state.credentials,
+  tasks: state.task.task
 }))(AddTask);

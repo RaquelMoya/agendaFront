@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,25 +13,27 @@ const ContactDetail = (props) => {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
     };
 
-    useEffect(()=>{
-        if(props.credentials.token === ""){
+    useEffect(() => {
+        if (props.credentials.token === "") {
             navigate("/");
         }
     });
 
-     //Hooks
+    //Hooks
 
-     const [dataContact, setDataContact] = useState({
-        name: "", surname: "", phone: "", email:""
-        
+    const [dataContact, setDataContact] = useState({
+        name: "", surname: "", phone: "", email: ""
+
     });
 
-      //Handler (manejador)
-      const inputData = (e) => {
-        setDataContact({...dataContact, 
-            [e.target.name]: e.target.value})
+    //Handler (manejador)
+    const inputData = (e) => {
+        setDataContact({
+            ...dataContact,
+            [e.target.name]: e.target.value
+        })
     };
-   
+
     const updateContact = async (id) => {
 
         let body = {
@@ -43,43 +45,43 @@ const ContactDetail = (props) => {
 
 
         try {
-            
+
             let resultado = await axios.put(`https://rocky-retreat-20214.herokuapp.com/api/contact/${id}`, body, config);
             console.log(resultado);
-            
-                setTimeout(()=>{
-                    navigate("/contacts");
-                },1000);
-            
-            
-            
+
+            setTimeout(() => {
+                navigate("/contacts");
+            }, 1000);
+
+
+
         } catch (error) {
             console.log(error);
         }
 
     }
-        return(
-            <div className='designDetail'>
-                <div className="detailHalf">
-                    <div className="datadetail title">{props.contacts.name}</div>
-                    <div className="datadetail">{props.contacts.surname}</div>
-                    <div className="datadetail">{props.contacts.phone}</div>
-                    <div className="datadetail">{props.contacts.email}</div>
-                </div>
-                <div className="detailHalf">
-                <input type="text" name="name" id="name" title="name" placeholder="Nombre:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="text" name="surname" id="surname" title="surname" placeholder="Apellido:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="tel" name="phone" id="phone" title="phone" placeholder="Phone: " autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                </div>
-                    <div className="button" onClick={()=>updateContact(props.contacts.id)}>
-                        Update Contact
-                    </div>
-                </div>
-           
-        )
-}  
-   
+    return (
+        <div className='designDetail'>
+            <div className="detailHalf">
+                <div className="datadetail title">{props.contacts.name}</div>
+                <div className="datadetail">{props.contacts.surname}</div>
+                <div className="datadetail">{props.contacts.phone}</div>
+                <div className="datadetail">{props.contacts.email}</div>
+            </div>
+            <div className="detailHalf">
+                <input type="text" name="name" id="name" title="name" placeholder="Nombre:" autoComplete="off" onChange={(e) => { inputData(e) }} />
+                <input type="text" name="surname" id="surname" title="surname" placeholder="Apellido:" autoComplete="off" onChange={(e) => { inputData(e) }} />
+                <input type="tel" name="phone" id="phone" title="phone" placeholder="Phone: " autoComplete="off" onChange={(e) => { inputData(e) }} />
+                <input type="email" name="email" id="email" title="email" placeholder="Email:" autoComplete="off" onChange={(e) => { inputData(e) }} />
+            </div>
+            <div className="button" onClick={() => updateContact(props.contacts.id)}>
+                Update Contact
+            </div>
+        </div>
+
+    )
+}
+
 
 
 
