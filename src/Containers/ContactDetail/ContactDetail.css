@@ -1,9 +1,11 @@
 .designDetail {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    background-image: url('../../img/background1.jpg');
+    background-size: cover;
     height: 74vh;
     width: 100vw;
 }
@@ -15,8 +17,8 @@
     align-items: center;
     justify-content: center;
 
-    height: 74vh;
-    width: 50vw;
+    height: 50vh;
+    width: 80vw;
 }
 .datadetail {
     display: flex;
@@ -24,8 +26,8 @@
     align-items: center;
     justify-content: center;
 
-    height: 74vh;
-    width: 50vw;
+    height: 50vh;
+    width: 800vw;
 }
 .title {
     display: flex;
@@ -33,6 +35,5 @@
     align-items: center;
     justify-content: center;
 
-    height: 70vh;
-    width: 50vw;
+    height: 50vh;
 }

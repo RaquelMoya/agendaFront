@@ -1,7 +1,7 @@
 ## AGEND FRONTEND 
 
 :wave: Soy Raquel Moya.</br>
-<hr>
+
 
 ---
 
@@ -48,22 +48,24 @@ A continuación, detallamos todas las funcionalidades que podemos encontrar en l
 ## Features
 
 Cuando iniciamos la app, nos lleva a la vista Welcome, donde podemos hacer login, o registrarnos. En la barra superior de la pantalla, encontraremos tambien botones de acceso a registro y login. </br>
-<img src="src/img/Home.jpg" width="1500">
+<img src="src/img/welcome.jpg" width="1500">
 
 Para registrarnos, debemos clickar sobre register y nos redirigirá a la vista de registro, donde podremos introducir nuestros datos para crear un usuario. 
 
-<img src="src/img/Register.jpg" width="1500">
+<img src="src/img/register.jpg" width="1500">
 
 Una vez nos hemos registrado, nos redirigirá a la vista de Login, donde deberemos introducir nuestro email y nuestro password con los que nos hemos registrado previamente. 
 
-<img src="src/img/Login.jpg" width="1500">
+<img src="src/img/login.jpg" width="1500">
 
 Al loguearnos, nos redirigirá a la vista de Profile, donde podremos modificar nuestros datos de usuario o acceder a las diferentes vistas de tareas (tasks), notas (notes) o contactos (contacts). También veremos como en la barra superior aparece un botón cde profile desde el que podremos volver a nuestro perfil y un botón para hacer Logout.
 
-<img src="src/img/ProfileUser.jpg" width="1500">
+<img src="src/img/profile.jpg" width="1500">
 
 Tanto si clickamos en Tasks, Notes o Contacts, nos redirigirá a dicha vista y nos mostrará todas las entradas que tiene el usuario logueado en su perfil. En cada vista, podremos crear una nueva entrada, o clickar sobre el título o nombre del objeto y acceder a los detalles, donde podremos modificar los campos.
 
+<img src="src/img/tasks.jpg" width="1500">
+<img src="src/img/tasksdetail.jpg" width="1500">
 <a name="tools"></a>
 ## Tecnologías y dependencias utilizadas
 

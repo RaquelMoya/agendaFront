@@ -1,56 +1,43 @@
+
 .designProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ height: 74vh;
+  width:100vw;
+  background-image: url('../../img/background.jpg');
+  background-size: cover;
+}
+  .container{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 74vh;
-    width: 100vw;
-}
-.designProfileHalf {
-
-    width: 50vw;
-
-}
-
-.profileRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-.profileLeft {
+   height: 74vh;
+    width:100vw;
+  }
+  .buttonDesign {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items:center;
+    align-items: right;
+    justify-content: center;
 
-    color: black;
-
-}
-
-.updateButton {
-    height: 2em;
-    width: 6em;
-
+    height: 30vh;
+    width:70vw;
+  }
+  
+  .card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 30vw;
+    height: 45vh;
+    margin-top: 5em;
+    background-color: lightskyblue;
+    -webkit-box-shadow: 3px 4px 10px -1px rgba(0, 0, 0, 0.51);
+    box-shadow: 3px 4px 10px -1px rgba(0, 0, 0, 0.51);
+    border-radius: 1em;
+  }
 
-    background-color: lightsteelblue;
-    color: hsl(0, 0%, 30%);
-
-    border-radius: 0.2em;
-    cursor: pointer;
-
-    margin-top: 1em;
-
-}
-
-.updateButton:hover {
-    color: lightsteelblue;
-    background-color: hsl(0, 0%, 30%);
-    border-radius: 0.2em;
-    
-}

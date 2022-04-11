@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Button from '../../Components/Button/Button';
+import Button1 from '../../Components/Button1/Button1';
 
 import './Welcome.css';
 
@@ -10,8 +10,8 @@ const Welcome = () => {
         <div className="designWelcome">
             <div className="card">
                 <p>¡Bienvenid@ a Agend!</p>
-                <Button destiny={"Login"} url={"/login"}/>
-                <Button destiny={"Register"} url={"/register"}/>
+                <Button1 destiny={"Login"} url={"/login"} />
+                <Button1 destiny={"Register"} url={"/register"} />
             </div>
         </div>
     )

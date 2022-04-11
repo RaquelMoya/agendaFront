@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,24 +13,26 @@ const NoteDetail = (props) => {
         headers: { Authorization: `Bearer ${props.credentials.token}` }
     };
 
-    useEffect(()=>{
-        if(props.credentials.token === ""){
+    useEffect(() => {
+        if (props.credentials.token === "") {
             navigate("/");
         }
     });
 
-        //Hooks
+    //Hooks
 
-        const [dataNote, setDataNote] = useState({
-            title: "", description: ""
-            
+    const [dataNote, setDataNote] = useState({
+        title: "", description: ""
+
     });
 
 
     //Handler (manejador)
     const inputData = (e) => {
-            setDataNote({...dataNote, 
-                [e.target.name]: e.target.value})
+        setDataNote({
+            ...dataNote,
+            [e.target.name]: e.target.value
+        })
     };
 
 
@@ -45,41 +47,41 @@ const NoteDetail = (props) => {
 
 
         try {
-            
+
             let resultado = await axios.put(`https://rocky-retreat-20214.herokuapp.com/api/note/${id}`, body, config);
             console.log(resultado);
-            
-                setTimeout(()=>{
-                    navigate("/notes");
-                },1000);
-            
-            
-            
+
+            setTimeout(() => {
+                navigate("/notes");
+            }, 1000);
+
+
+
         } catch (error) {
             console.log(error);
         }
 
     }
-   
-        return(
-            <div className='designDetail'>
-                <div className="DetailHalf">
-                    <div className="dataDetail title">{props.notes.title}</div>
-                    <div className="dataDetail">{props.notes.description}</div>
-                </div>
-                <div className="DetailHalf">
+
+    return (
+        <div className='designDetail'>
+            <div className="DetailHalf">
+                <div className="dataDetail title">{props.notes.title}</div>
+                <div className="dataDetail">{props.notes.description}</div>
+            </div>
+            <div className="DetailHalf">
                 <div className="middleCard">
-                    <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>
-                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e)=>{inputData(e)}}/>   
+                    <input type="text" name="title" id="title" title="title" placeholder="Title:" autoComplete="off" onChange={(e) => { inputData(e) }} />
+                    <input type="text" name="description" id="description" title="description" placeholder="Description:" autoComplete="off" onChange={(e) => { inputData(e) }} />
                 </div>
-                    <div className="button" onClick={()=>updateNote(props.notes.id)}>
-                        Update Note
-                    </div>
+                <div className="button" onClick={() => updateNote(props.notes.id)}>
+                    Update Note
                 </div>
             </div>
-        )
-}  
-   
+        </div>
+    )
+}
+
 
 
 
