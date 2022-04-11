@@ -17,6 +17,16 @@
     height: 20vh;
    
 }
+.Design {
+    background-image: url('../../img/agenda.jpg');
+    background-size: 20em;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    height: 20vh;
+}
 .linksDesign {
     display: flex;
     flex-direction: row;

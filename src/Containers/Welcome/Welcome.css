@@ -4,6 +4,9 @@
     align-items: center;
     justify-content: center;
 
+    background-image: url('../../img/background.jpg');
+    background-size: cover;
+
     height: 74vh;
     width: 100vw;
 }

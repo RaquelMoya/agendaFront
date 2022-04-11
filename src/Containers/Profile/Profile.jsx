@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Modal, Button, Input, notification } from "antd";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Button1 from '../../Components/Button1/Button1';
 
 
 
@@ -184,16 +185,14 @@ const Profile = (props) => {
                 />
               </Modal>
             </div>
+            <div className="buttonDesign">
+            <Button1 destiny={"Tasks"} url={"/tasks"}/>
+                <Button1 destiny={"Notes"} url={"/notes"}/>
+                <Button1 destiny={"Contacts"} url={"/contacts"}/>
+             </div>
+          </div>
+        </div>
             
-
-                <div className="designProfile">
-                <Button destiny={"Tasks"} url={"/tasks"}/>
-                <Button destiny={"Notes"} url={"/notes"}/>
-                <Button destiny={"Contacts"} url={"/contacts"}/>
-                </div>
-
-            </div>
-            </div>
         )
 
 
