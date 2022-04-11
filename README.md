@@ -29,7 +29,7 @@ A continuación encontraréis detallados cada una de las funcionalidades de este
 
 Dado que hemos deployado el Frontend en AWS, y el backend junto con la BBDD en Heroku, podemos acceder a la app de forma remota con el siguiente enlace:
 
-=============>https://master.d26c8aov44o1cy.amplifyapp.com<===================
+https://master.d24jszhptu64in.amplifyapp.com/
 
 Si por el contrario, queremos acceder a la app de manera local, deberíamos seguir las instrucciones de instalación local del backend plasmadas en el readme del proyecto en https://github.com/RaquelMoya/agenda y, posteriormente, clonar este repositorio localmente.
 una vez clonado, deberemos instalar las dependencias no incluidas por el archivo .gitignore:
